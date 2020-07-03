@@ -11,7 +11,6 @@ import UIKit
 class ViewController: UIViewController, UITextFieldDelegate {
 
 
-    @IBOutlet weak var resultSul: UILabel!
     @IBOutlet weak var inputMoney: UITextField!
 
     @IBOutlet weak var changeBtn: UIButton!
@@ -19,9 +18,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //input number pad로 설정
-        inputMoney.keyboardType = .numberPad
+        
+        inputMoney.delegate = self
         
         
         
@@ -43,9 +41,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print( "편집 종료" )
-        print(textField)
+        if textField.text == "" {
+            textField.text = "0"
+        }
+        // 계산 함수 호출
+        self.caculSul(moneystr: textField.text!)
     }
-    
+    func caculSul(moneystr:String){
+        let money:Int! = Int(moneystr)
+        if(money > 4000){
+            let bottle_count:Int = money/4000
+            for i in 1...bottle_count {
+                // 병수만큼 for문 돌면서 아이템 추가
+                print(i)
+            }
+        }
+    }
 }
 
