@@ -10,6 +10,7 @@
 		7848B368249F25AB00B8202A /* sul.png in Resources */ = {isa = PBXBuildFile; fileRef = 7848B367249F25AB00B8202A /* sul.png */; };
 		7848B36A24A8CD7F00B8202A /* w.png in Resources */ = {isa = PBXBuildFile; fileRef = 7848B36924A8CD7F00B8202A /* w.png */; };
 		7848B36C24A8CDE500B8202A /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 7848B36B24A8CDE500B8202A /* setting.png */; };
+		7848B36E24AF7EC000B8202A /* SulListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7848B36D24AF7EC000B8202A /* SulListController.swift */; };
 		78DC53C1248E4092004CD82E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC53C0248E4092004CD82E /* AppDelegate.swift */; };
 		78DC53C3248E4092004CD82E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC53C2248E4092004CD82E /* SceneDelegate.swift */; };
 		78DC53C5248E4092004CD82E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC53C4248E4092004CD82E /* ViewController.swift */; };
@@ -42,6 +43,7 @@
 		7848B367249F25AB00B8202A /* sul.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sul.png; sourceTree = "<group>"; };
 		7848B36924A8CD7F00B8202A /* w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = w.png; sourceTree = "<group>"; };
 		7848B36B24A8CDE500B8202A /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
+		7848B36D24AF7EC000B8202A /* SulListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SulListController.swift; sourceTree = "<group>"; };
 		78DC53BD248E4092004CD82E /* Sul.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sul.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78DC53C0248E4092004CD82E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78DC53C2248E4092004CD82E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				78DC53CE248E4095004CD82E /* LaunchScreen.storyboard */,
 				78DC53D1248E4095004CD82E /* Info.plist */,
 				78DC53C9248E4092004CD82E /* Sul.xcdatamodeld */,
+				7848B36D24AF7EC000B8202A /* SulListController.swift */,
 			);
 			path = Sul;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				78DC53C5248E4092004CD82E /* ViewController.swift in Sources */,
 				78DC53C1248E4092004CD82E /* AppDelegate.swift in Sources */,
 				78DC53C3248E4092004CD82E /* SceneDelegate.swift in Sources */,
+				7848B36E24AF7EC000B8202A /* SulListController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

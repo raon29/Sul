@@ -16,6 +16,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var changeBtn: UIButton!
     @IBOutlet weak var settingBtn: UIButton!
     
+    @IBOutlet weak var change: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,12 +52,37 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     func caculSul(moneystr:String){
         let money:Int! = Int(moneystr)
-        if(money > 4000){
-            let bottle_count:Int = money/4000
-            for i in 1...bottle_count {
-                // 병수만큼 for문 돌면서 아이템 추가
-                print(i)
+        
+        struct sul {
+            var name:String
+            var price:Int
+        }
+
+        // 소주 5000원, 맥주 4000원
+        var soju = sul(name:"soju", price:5000)
+        var beer = sul(name:"beer", price:4000)
+        var somacList:[sul] = [soju, beer]
+        // 가격별로 sorting
+        somacList = somacList.sorted(by: { $0.price > $1.price } )
+        
+        if( money >= somacList[somacList.count - 1].price ){
+            var calMoney:Int = money
+
+            for sul in somacList {
+                // 술 종류 가격별로
+                if(calMoney >= sul.price){
+                    var bottle:Int = calMoney/sul.price
+                    
+                    calMoney = calMoney%sul.price
+                }
             }
+            
+            // 남은 돈 출력
+            change.text = String(calMoney) + "원 남았습니다."
+            
+        }
+        else{
+            change.text = "아직은 때가 아니다."
         }
     }
 }
