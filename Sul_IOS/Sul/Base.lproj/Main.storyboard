@@ -31,37 +31,44 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uPY-Ke-Qad">
                                 <rect key="frame" x="247" y="93" width="61" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Change" image="w.png"/>
+                                <state key="normal" title="addSulBtn" image="addsul"/>
                                 <connections>
-                                    <action selector="changeClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uab-U1-rqk"/>
-                                    <segue destination="hAc-XN-nCN" kind="push" id="zhk-qa-Jcj"/>
+                                    <segue destination="hAc-XN-nCN" kind="show" id="zhk-qa-Jcj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="liT-uP-D0D">
                                 <rect key="frame" x="316" y="95" width="60" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Setting" image="setting.png"/>
+                                <state key="normal" title="Setting" image="setting"/>
                                 <connections>
-                                    <action selector="settingClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C2P-4x-Rd4"/>
-                                    <segue destination="26S-Gr-h2D" kind="push" id="Z4f-IH-hfK"/>
+                                    <segue destination="26S-Gr-h2D" kind="show" id="Z4f-IH-hfK"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7C8-0b-g25">
-                                <rect key="frame" x="54" y="675" width="309" height="73"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7C8-0b-g25" userLabel="ResultText">
+                                <rect key="frame" x="18" y="457" width="375" height="112"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vAe-Cc-NqY" userLabel="ResultBtn">
+                                <rect key="frame" x="160" y="571" width="116" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="VcA-eu-2QQ"/>
                     <connections>
-                        <outlet property="change" destination="7C8-0b-g25" id="FEQ-l8-NNH"/>
-                        <outlet property="changeBtn" destination="uPY-Ke-Qad" id="mpt-b7-lII"/>
+                        <outlet property="addSulBtn" destination="uPY-Ke-Qad" id="vWh-ia-td7"/>
                         <outlet property="inputMoney" destination="Gz3-sK-a3r" id="Yc6-qf-BLv"/>
+                        <outlet property="mainView" destination="8bC-Xf-vdC" id="BPl-Dr-YGe"/>
+                        <outlet property="resultBtn" destination="vAe-Cc-NqY" id="okr-8T-YBR"/>
+                        <outlet property="resultText" destination="7C8-0b-g25" id="Bo1-lE-U6E"/>
                         <outlet property="settingBtn" destination="liT-uP-D0D" id="ISY-Ug-Z00"/>
                     </connections>
                 </viewController>
@@ -134,7 +141,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="setting.png" width="550.79998779296875" height="550.79998779296875"/>
-        <image name="w.png" width="512" height="512"/>
+        <image name="addsul" width="180" height="180"/>
+        <image name="setting" width="2295" height="2295"/>
     </resources>
 </document>

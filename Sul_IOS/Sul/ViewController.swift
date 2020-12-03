@@ -10,32 +10,24 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
-
+    @IBOutlet var mainView: UIView!
+    
     @IBOutlet weak var inputMoney: UITextField!
 
-    @IBOutlet weak var changeBtn: UIButton!
+    @IBOutlet weak var addSulBtn: UIButton!
     @IBOutlet weak var settingBtn: UIButton!
     
-    @IBOutlet weak var change: UILabel!
-    
+    @IBOutlet weak var resultText: UILabel!
+    @IBOutlet weak var resultBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         inputMoney.delegate = self
+        resultBtn.isHidden = true
+        resultText.isHidden = true
         
         
-        
-        
-    }
-    
-    // setting Button 눌렀을 때
-    @IBAction func settingClick(_ sender: Any) {
-        print("settnig click!")
-    }
-    // change Button 눌렀을 때
-    @IBAction func changeClick(_ sender: Any) {
-        print("change click!")
     }
     
     // 터치시 keyboard 닫기 설정
@@ -57,33 +49,51 @@ class ViewController: UIViewController, UITextFieldDelegate {
             var name:String
             var price:Int
         }
-
-        // 소주 5000원, 맥주 4000원
-        var soju = sul(name:"soju", price:5000)
-        var beer = sul(name:"beer", price:4000)
-        var somacList:[sul] = [soju, beer]
-        // 가격별로 sorting
-        somacList = somacList.sorted(by: { $0.price > $1.price } )
+         
+        // TODO :: 이부분 변경후 삭제 필요
+        // var soju = sul(name:"soju", price:5000)
+        // var beer = sul(name:"beer", price:4000)
+        // var sulList:[sul] = [soju, beer]
+        var sulList:[sul] = []
         
-        if( money >= somacList[somacList.count - 1].price ){
-            var calMoney:Int = money
-
-            for sul in somacList {
-                // 술 종류 가격별로
-                if(calMoney >= sul.price){
-                    var bottle:Int = calMoney/sul.price
-                    
-                    calMoney = calMoney%sul.price
-                }
-            }
+        if (sulList.count == 0){
+            //TODO :: 등록하러가기 icon으로 변경
+            resultBtn.setBackgroundImage(UIImage(named: "addsul"), for: .normal)
+            resultBtn.addTarget(self, action: #selector(goAddSul), for: .touchUpInside)
+            resultText.text = "등록된 술이 없어요 :(\n등록해주세용"
             
-            // 남은 돈 출력
-            change.text = String(calMoney) + "원 남았습니다."
+            resultBtn.isHidden = false
+            resultText.isHidden = false
             
         }
         else{
-            change.text = "아직은 때가 아니다."
+            // 가격별로 sorting
+            sulList = sulList.sorted(by: { $0.price < $1.price } )
+            
+            if( money >= sulList[0].price ){
+                
+                // TODO :: 가격보러가는 아이콘으로 변경
+                resultBtn.setBackgroundImage(UIImage(named: "addsul"), for: .normal)
+                resultBtn.addTarget(self, action: #selector(goResultSul), for: .touchUpInside)
+
+                // 멘트 숨기기 & btn 활성화
+                resultText.isHidden = true
+                resultBtn.isHidden = false
+                
+            }
+            else{
+                resultText.text = "아직은 때가 아니다."
+                resultBtn.isHidden = true
+                resultText.isHidden = false
+            }
         }
+    }
+    @objc func goAddSul(){
+        //TODO sul 등록하는 페이지로..
+        print("등록하는 페이지로 가자꾸나")
+    }
+    @objc func goResultSul() {
+        // TODO 계산된 sul 보여주는 페이지로 이동
     }
 }
 
