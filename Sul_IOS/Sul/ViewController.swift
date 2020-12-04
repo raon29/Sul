@@ -51,10 +51,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
          
         // TODO :: 이부분 변경후 삭제 필요
-        // var soju = sul(name:"soju", price:5000)
-        // var beer = sul(name:"beer", price:4000)
-        // var sulList:[sul] = [soju, beer]
-        var sulList:[sul] = []
+         var soju = sul(name:"soju", price:5000)
+         var beer = sul(name:"beer", price:4000)
+         var sulList:[sul] = [soju, beer]
+         // var sulList:[sul] = []
         
         if (sulList.count == 0){
             //TODO :: 등록하러가기 icon으로 변경
@@ -89,11 +89,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
     @objc func goAddSul(){
-        //TODO sul 등록하는 페이지로..
-        print("등록하는 페이지로 가자꾸나")
+        // sul 등록하는 페이지로..
+        guard let asvc = self.storyboard?.instantiateViewController(identifier: "AddSulVC") else{return}
+        self.navigationController?.pushViewController(asvc, animated: true)
     }
     @objc func goResultSul() {
-        // TODO 계산된 sul 보여주는 페이지로 이동
+        // 계산된 sul 보여주는 페이지로 이동
+        guard let rvc = self.storyboard?.instantiateViewController(identifier: "ResultVC") else {return}
+        self.navigationController?.pushViewController(rvc, animated: true)
     }
 }
 

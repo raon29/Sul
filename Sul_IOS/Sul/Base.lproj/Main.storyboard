@@ -94,10 +94,10 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="92.410714285714278"/>
         </scene>
-        <!--Sul List Controller-->
+        <!--술 추가-->
         <scene sceneID="7KF-93-Fyc">
             <objects>
-                <tableViewController id="hAc-XN-nCN" customClass="SulListController" customModule="Sul" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AddSulVC" id="hAc-XN-nCN" customClass="SulListController" customModule="Sul" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OEx-Ma-jc1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -117,13 +117,13 @@
                             <outlet property="delegate" destination="hAc-XN-nCN" id="FCk-Xf-ZdH"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="esW-iL-Q6R"/>
+                    <navigationItem key="navigationItem" title="술 추가" id="esW-iL-Q6R"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T7c-cw-QtF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1919" y="-62"/>
+            <point key="canvasLocation" x="1919" y="-345"/>
         </scene>
-        <!--View Controller-->
+        <!--설정-->
         <scene sceneID="Yeu-gs-FrR">
             <objects>
                 <viewController id="26S-Gr-h2D" sceneMemberID="viewController">
@@ -133,11 +133,27 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="SnL-9z-sHq"/>
                     </view>
-                    <navigationItem key="navigationItem" id="vB7-sK-qNJ"/>
+                    <navigationItem key="navigationItem" title="설정" id="vB7-sK-qNJ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LrV-8P-iSW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1919" y="597"/>
+            <point key="canvasLocation" x="1919" y="325"/>
+        </scene>
+        <!--먹을 수 있는 술-->
+        <scene sceneID="Or5-o1-O4E">
+            <objects>
+                <viewController storyboardIdentifier="ResultVC" id="fJh-gi-Ma8" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mcy-KR-8Ua">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="sGl-FB-SNj"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="먹을 수 있는 술" id="yMU-yU-x9U"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IQZ-RZ-Mbw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1918.840579710145" y="1008.4821428571428"/>
         </scene>
     </scenes>
     <resources>
