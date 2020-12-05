@@ -93,9 +93,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         guard let asvc = self.storyboard?.instantiateViewController(identifier: "AddSulVC") else{return}
         self.navigationController?.pushViewController(asvc, animated: true)
     }
-    @objc func goResultSul() {
+    @objc func goResultSul(_: Int) {
         // 계산된 sul 보여주는 페이지로 이동
-        guard let rvc = self.storyboard?.instantiateViewController(identifier: "ResultVC") else {return}
+        guard let rvc = self.storyboard?.instantiateViewController(identifier: "ResultVC") as? ResultViewController else {return}
+        // 입력받은 가격 Data 전달
+        rvc.haveMoney = Int(inputMoney.text ?? "0") ?? 0
         self.navigationController?.pushViewController(rvc, animated: true)
     }
 }

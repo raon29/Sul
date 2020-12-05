@@ -142,14 +142,26 @@
         <!--먹을 수 있는 술-->
         <scene sceneID="Or5-o1-O4E">
             <objects>
-                <viewController storyboardIdentifier="ResultVC" id="fJh-gi-Ma8" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResultVC" id="fJh-gi-Ma8" customClass="ResultViewController" customModule="Sul" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mcy-KR-8Ua">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4C-Wm-AAY">
+                                <rect key="frame" x="169" y="400" width="76" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="sGl-FB-SNj"/>
                     </view>
                     <navigationItem key="navigationItem" title="먹을 수 있는 술" id="yMU-yU-x9U"/>
+                    <connections>
+                        <outlet property="ResultText" destination="i4C-Wm-AAY" id="MFR-yP-ac7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IQZ-RZ-Mbw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
