@@ -10,6 +10,7 @@
 		7848B36E24AF7EC000B8202A /* SulListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7848B36D24AF7EC000B8202A /* SulListController.swift */; };
 		787F1F92257902720098B479 /* addsul.png in Resources */ = {isa = PBXBuildFile; fileRef = 787F1F91257902720098B479 /* addsul.png */; };
 		787F1F94257BCE880098B479 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787F1F93257BCE880098B479 /* ResultViewController.swift */; };
+		787F1F96258263F30098B479 /* AddSulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787F1F95258263F30098B479 /* AddSulViewController.swift */; };
 		78DC53C1248E4092004CD82E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC53C0248E4092004CD82E /* AppDelegate.swift */; };
 		78DC53C3248E4092004CD82E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC53C2248E4092004CD82E /* SceneDelegate.swift */; };
 		78DC53C5248E4092004CD82E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC53C4248E4092004CD82E /* ViewController.swift */; };
@@ -42,6 +43,7 @@
 		7848B36D24AF7EC000B8202A /* SulListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SulListController.swift; sourceTree = "<group>"; };
 		787F1F91257902720098B479 /* addsul.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addsul.png; sourceTree = "<group>"; };
 		787F1F93257BCE880098B479 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		787F1F95258263F30098B479 /* AddSulViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSulViewController.swift; sourceTree = "<group>"; };
 		78DC53BD248E4092004CD82E /* Sul.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sul.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78DC53C0248E4092004CD82E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78DC53C2248E4092004CD82E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				78DC53C9248E4092004CD82E /* Sul.xcdatamodeld */,
 				7848B36D24AF7EC000B8202A /* SulListController.swift */,
 				787F1F93257BCE880098B479 /* ResultViewController.swift */,
+				787F1F95258263F30098B479 /* AddSulViewController.swift */,
 			);
 			path = Sul;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			files = (
 				78DC53CB248E4092004CD82E /* Sul.xcdatamodeld in Sources */,
 				78DC53C5248E4092004CD82E /* ViewController.swift in Sources */,
+				787F1F96258263F30098B479 /* AddSulViewController.swift in Sources */,
 				78DC53C1248E4092004CD82E /* AppDelegate.swift in Sources */,
 				78DC53C3248E4092004CD82E /* SceneDelegate.swift in Sources */,
 				7848B36E24AF7EC000B8202A /* SulListController.swift in Sources */,

@@ -94,10 +94,10 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="92.410714285714278"/>
         </scene>
-        <!--술 추가-->
+        <!--SUL-->
         <scene sceneID="7KF-93-Fyc">
             <objects>
-                <tableViewController storyboardIdentifier="AddSulVC" id="hAc-XN-nCN" customClass="SulListController" customModule="Sul" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ListSulVC" id="hAc-XN-nCN" customClass="SulListController" customModule="Sul" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OEx-Ma-jc1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,6 +109,12 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="66Z-EY-MMt" id="36S-Yw-lnX">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AQk-hD-cUb">
+                                            <rect key="frame" x="0.0" y="-1" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        </navigationBar>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -117,7 +123,13 @@
                             <outlet property="delegate" destination="hAc-XN-nCN" id="FCk-Xf-ZdH"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="술 추가" id="esW-iL-Q6R"/>
+                    <navigationItem key="navigationItem" title="SUL" id="F0L-kt-Zkk">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="tKs-8d-OJp">
+                            <connections>
+                                <action selector="moveAddSul:" destination="hAc-XN-nCN" id="mxU-Pj-nNu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T7c-cw-QtF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -166,6 +178,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IQZ-RZ-Mbw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1918.840579710145" y="1008.4821428571428"/>
+        </scene>
+        <!--Add Sul View Controller-->
+        <scene sceneID="R5t-A5-zHe">
+            <objects>
+                <viewController storyboardIdentifier="AddSulVC" id="A3a-qD-ZZy" customClass="AddSulViewController" customModule="Sul" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="piG-57-GCe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Tvk-Ic-NLe"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Vba-TE-Q05">
+                        <barButtonItem key="rightBarButtonItem" id="gjA-ik-RsR">
+                            <connections>
+                                <action selector="sulSaveClick:" destination="A3a-qD-ZZy" id="ZRr-HM-xje"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="sulSave" destination="gjA-ik-RsR" id="het-rB-B9i"/>
+                        <outlet property="vcTitle" destination="Vba-TE-Q05" id="ROs-dV-Gj1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9wQ-iH-QAM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2674" y="-346"/>
         </scene>
     </scenes>
     <resources>
