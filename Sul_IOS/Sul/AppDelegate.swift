@@ -15,8 +15,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
+        // DB Setting
+        // DB, table 생성
+        let myDB = DBHelper.shared;
+        myDB.createDB(path: "sulSqlite.sqlite")
+        var cTable:String = "create table if not exists sulListTB(name text not null primary key, price INTEGER not null);"
+       myDB.commitQuery(query: cTable)
+
+//        // Test Data 추가
+//        var sul = SulVO(name: "맥주", price:4000)
+//        var testDataInsert = "insert into sulListTB(name, price) values(\"" + sul.name + "\",\"" + String(sul.price) + "\");"
+//        myDB.commitQuery(query: testDataInsert)
+//
+//        sul = SulVO(name:"소주", price:4000)
+//        testDataInsert = "insert into sulListTB(name, price) values(\"" + sul.name + "\",\"" + String(sul.price) + "\");"
+//        myDB.commitQuery(query: testDataInsert)
+
         //loading Delay
         sleep(1)
         

@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var mainView: UIView!
@@ -45,16 +46,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func caculSul(moneystr:String){
         let money:Int! = Int(moneystr)
         
-        struct sul {
-            var name:String
-            var price:Int
-        }
-         
-        // TODO :: 이부분 변경후 삭제 필요
-         var soju = sul(name:"soju", price:5000)
-         var beer = sul(name:"beer", price:4000)
-         var sulList:[sul] = [soju, beer]
-         // var sulList:[sul] = []
+        // TODO :: sul list db에서 가져와서 읽고 어쩌구 저쩌구~~
+        var readSulQ = "select * from sulListTB;"
+        let myDB = DBHelper.shared;
+        var sulList:[SulVO] = myDB.readSULData(query: readSulQ) as! [SulVO]
         
         if (sulList.count == 0){
             //TODO :: 등록하러가기 icon으로 변경
@@ -73,7 +68,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             if( money >= sulList[0].price ){
                 
                 // TODO :: 가격보러가는 아이콘으로 변경
-                resultBtn.setBackgroundImage(UIImage(named: "addsul"), for: .normal)
+                resultBtn.setBackgroundImage(UIImage(named: "resultSul"), for: .normal)
                 resultBtn.addTarget(self, action: #selector(goResultSul), for: .touchUpInside)
 
                 // 멘트 숨기기 & btn 활성화
@@ -90,7 +85,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     @objc func goAddSul(){
         // sul 등록하는 페이지로..
-        guard let asvc = self.storyboard?.instantiateViewController(identifier: "AddSulVC") else{return}
+        guard let asvc = self.storyboard?.instantiateViewController(identifier: "ListSulVC") else{return}
         self.navigationController?.pushViewController(asvc, animated: true)
     }
     @objc func goResultSul(_: Int) {
@@ -101,4 +96,3 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.pushViewController(rvc, animated: true)
     }
 }
-
