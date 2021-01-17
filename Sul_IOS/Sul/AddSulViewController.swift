@@ -17,8 +17,9 @@ class AddSulViewController: UIViewController {
     @IBOutlet weak var sulName: UITextField!
     @IBOutlet weak var sulPrice: UITextField!
     
-    // 받을 정보
+    let picker = UIImagePickerController()
     
+    // 받을 정보
     var curSul:SulVO? = nil;
     
     override func viewDidLoad() {
@@ -36,6 +37,14 @@ class AddSulViewController: UIViewController {
             vcTitle.title = "술 추가"
             sulSave.title = "추가"
         }
+        
+        picker.delegate = self
+        
+        //Img Action 추가
+        let tgr = UITapGestureRecognizer(target: self, action: #selector(ImagePick))
+        sulIMG.isUserInteractionEnabled = true
+        sulIMG.addGestureRecognizer(tgr)
+        
         
     }
     
@@ -78,7 +87,35 @@ class AddSulViewController: UIViewController {
             // 이미 존재하는 이름의 술입니다.
             
         }
-        
     }
+    @objc func ImagePick() {
+        //ImpagePicker alert 구현
+        let alert = UIAlertController(title: "술 사진을 골라주세요", message: nil, preferredStyle: .actionSheet)
+        let album = UIAlertAction(title: "사진앨범", style: .default){
+            (action) in self.openAlbum()
+        }
+        let camera = UIAlertAction(title: "카메라", style: .default){
+            (action) in self.openCamera()
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        alert.addAction(album)
+        alert.addAction(camera)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    func openAlbum() {
+        picker.sourceType = .photoLibrary
+        present(picker, animated: false, completion: nil)
+    }
+    func openCamera() {
+        picker.sourceType = .camera
+        present(picker, animated: false, completion: nil)
+    }
+    
+}
 
+extension AddSulViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
 }
