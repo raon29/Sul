@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // DB, table 생성
         let myDB = DBHelper.shared;
         myDB.createDB(path: "sulSqlite.sqlite")
-        var cTable:String = "create table if not exists sulListTB(name text not null primary key, price INTEGER not null);"
+        var cTable:String = "create table if not exists sulListTB(name text not null primary key, price INTEGER not null, img INTEGER not null);"
        myDB.commitQuery(query: cTable)
 
 //        // Test Data 추가

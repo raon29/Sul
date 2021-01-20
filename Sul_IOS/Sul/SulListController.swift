@@ -40,12 +40,24 @@ class SulListController: UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // TODO:: 이미지 추가~~
         let row = self.list[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! SullListCell
         cell.sulName.text = row.name
         cell.sulPrice.text = String(row.price)
         
+        let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let url = documents.appendingPathComponent(cell.sulName.text! + ".jpg")
+        if (row.img){
+            do { cell.sulImg.image = try UIImage( data: Data(contentsOf: url) ) }
+            catch{
+                //TODO 이미지 로드 실패 Alert
+                print("ㅎㅎ.. 이미지 로드 실패..")
+            }
+        }else{
+            // 기본이미지로 Setting
+            cell.sulImg.image = UIImage(named: "sul")
+        }
+
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -63,9 +75,18 @@ class SulListController: UITableViewController{
                 self.list.remove(at: indexPath.row)
                 //TableView에서 삭제
                 tableView.deleteRows(at: [indexPath], with: .fade)
+                
+                let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                do {
+                    try FileManager.default.removeItem(atPath: documents.path + "/" + self.list[indexPath.row].name + ".jpg")
+                } catch {
+                    //TODO :: alret
+                }
+                
             }else{
                 // TODO :: 삭제에 실패했습니다 alert
             }
+            
         }
     }
     

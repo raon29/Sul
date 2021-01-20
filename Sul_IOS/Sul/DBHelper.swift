@@ -69,8 +69,9 @@ class DBHelper {
                 // 읽은 Data 변수에 담기
                 let name =  String(cString: sqlite3_column_text(statement, 0))
                 let price = sqlite3_column_int(statement, 1)
+                let img = sqlite3_column_int(statement, 2)
                 // 반환할 리스트에 추가
-                sulList.append(SulVO(name: name, price: Int(price)))
+                sulList.append(SulVO(name: name, price: Int(price), img: Bool(img as NSNumber)))
             }
         }
         else {
