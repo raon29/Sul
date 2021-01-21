@@ -41,7 +41,7 @@ class DBHelper {
         
         if sqlite3_prepare_v2(self.db, query, -1, &statement, nil) == SQLITE_OK {
             if sqlite3_step(statement) == SQLITE_DONE {
-                print("[DB] Query SuccessFully \(String(describing: db))")
+                print("[DB] Query SuccessFully \(query)")
                 return true
             }
             else{

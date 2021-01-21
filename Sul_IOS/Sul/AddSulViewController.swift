@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddSulViewController: UIViewController {
+class AddSulViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var vcTitle: UINavigationItem!
     @IBOutlet weak var sulSave: UIBarButtonItem!
@@ -25,8 +25,8 @@ class AddSulViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        sulName.delegate = self
-//        sulPrice.delegate = self
+        sulName.delegate = self
+        sulPrice.delegate = self
         
         if ((curSul) != nil) {
             vcTitle.title = "술 수정"
@@ -37,10 +37,11 @@ class AddSulViewController: UIViewController {
             sulPrice.text = String(curSul?.price as! Int)
             if (curSul!.img) {
                 let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-                let url = documents.appendingPathComponent(curSul!.name)
+                let url = documents.appendingPathComponent(curSul!.name + ".jpg")
                 do { sulIMG.image = try UIImage( data: Data(contentsOf: url) ) }
                 catch {
                     //TODO :: error alert
+                    print("이미지 읽기 실패!")
                 }
             } else {
                 //TODO 추가 이미지 setting (+)
@@ -98,9 +99,9 @@ class AddSulViewController: UIViewController {
             // SAVE SUL INFO
             var query:String;
             if(sulSave.title == "수정"){
-                query = "update sulListTB set name = \"\(sulName.text!)\", price = \" \( sulPrice.text!)\", img = \(curSul!.img == true ? 1:0) where name = \" \( curSul!.name)\";"
+                query = "update sulListTB set name = \"\(sulName.text!)\", price = \"\( sulPrice.text!)\", img = \(curSul!.img == true ? 1:0) where name = \"\( curSul!.name)\";"
             } else{
-                query = "insert into sulListTB(name, price, img) values(\" \(self.sulName.text!) \",\" \(self.sulPrice.text!) \", \( self.sulIMG.image != nil ? 1:0) );"
+                query = "insert into sulListTB(name, price, img) values(\"\(self.sulName.text!)\",\"\(self.sulPrice.text!)\",\( self.sulIMG.image != nil ? 1:0));"
             }
             if ( myDB.commitQuery(query: query) ){
                 if(sulIMG.image != nil) {
@@ -168,7 +169,7 @@ class AddSulViewController: UIViewController {
         // Convert to Data
         if let data = sulIMG.image!.jpegData(compressionQuality: 0.5) {
             do {
-                try data.write(to: documents.appendingPathComponent(sulName.text! + ".jpg"))
+                try data.write(to: documents.appendingPathComponent(self.sulName.text! + ".jpg"))
             } catch {
                 print("이미지 저장 실패!")
                 // TODO :: 이미지 저장실패 alert

@@ -46,7 +46,7 @@ class SulListController: UITableViewController{
         cell.sulPrice.text = String(row.price)
         
         let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let url = documents.appendingPathComponent(cell.sulName.text! + ".jpg")
+        let url = documents.appendingPathComponent(row.name + ".jpg")
         if (row.img){
             do { cell.sulImg.image = try UIImage( data: Data(contentsOf: url) ) }
             catch{
