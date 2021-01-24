@@ -29,7 +29,6 @@ class SulListController: UITableViewController{
         tableView.reloadData()
     }
     func fetchData(){
-        // TODO :: 여기서 이미지도 read 해주셈;;
         // TODO :: read 실패했을때.. 처리..
         var readSulQ = "select * from sulListTB;"
         self.list = myDB.readSULData(query: readSulQ) as! [SulVO]
@@ -50,8 +49,11 @@ class SulListController: UITableViewController{
         if (row.img){
             do { cell.sulImg.image = try UIImage( data: Data(contentsOf: url) ) }
             catch{
-                //TODO 이미지 로드 실패 Alert
-                print("ㅎㅎ.. 이미지 로드 실패..")
+                // 이미지 로드 실패 Alert
+                let alert = UIAlertController(title: "이미지 가져오기 실패", message: "이미지를 가져오는데 실패하였습니다.", preferredStyle: .alert)
+                let cancel = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+                alert.addAction(cancel)
+                present(alert, animated: false, completion: nil)
             }
         }else{
             // 기본이미지로 Setting
@@ -68,26 +70,39 @@ class SulListController: UITableViewController{
     }
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if(editingStyle == .delete){
-            // TODO :: 삭제 한번더 물어보는 alert창
-            // DB에서 목록 삭제
-            var deleteSulQ = "delete from sulListTB where name = \"" + self.list[indexPath.row].name + "\";"
-            if( myDB.commitQuery(query: deleteSulQ) ){
-                self.list.remove(at: indexPath.row)
-                //TableView에서 삭제
-                tableView.deleteRows(at: [indexPath], with: .fade)
-                
-                let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-                do {
-                    try FileManager.default.removeItem(atPath: documents.path + "/" + self.list[indexPath.row].name + ".jpg")
-                } catch {
-                    //TODO :: alret
-                }
-                
-            }else{
-                // TODO :: 삭제에 실패했습니다 alert
+            // 삭제 한번더 물어보는 alert창
+            let alert = UIAlertController(title: "술 삭제", message: "술 목록에서 삭제하시겠습니까?", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "확인", style: .default){
+                (action) in self.remove(indexPath: indexPath)
             }
+            let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+            alert.addAction(ok)
+            alert.addAction(cancel)
+            present(alert, animated: false, completion: nil)
             
         }
     }
-    
+    func remove(indexPath: IndexPath){
+        // DB에서 목록 삭제
+        var deleteSulQ = "delete from sulListTB where name = \"" + self.list[indexPath.row].name + "\";"
+        if( myDB.commitQuery(query: deleteSulQ) ){
+            self.list.remove(at: indexPath.row)
+            //TableView에서 삭제
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            do {
+                try FileManager.default.removeItem(atPath: documents.path + "/" + self.list[indexPath.row].name + ".jpg")
+            } catch {
+                // 이미지 삭제 실패
+            }
+            
+        }else{
+            //  삭제에 실패했습니다 alert
+            let alert = UIAlertController(title: "삭제 실패", message: "술을 삭제하는대 실패하였습니다.", preferredStyle: .alert)
+            let cancel = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+            alert.addAction(cancel)
+            present(alert, animated: false, completion: nil)
+        }
+    }
 }

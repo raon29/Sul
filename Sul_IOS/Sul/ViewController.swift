@@ -46,7 +46,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func caculSul(moneystr:String){
         let money:Int! = Int(moneystr)
         
-        // TODO :: sul list db에서 가져와서 읽고 어쩌구 저쩌구~~
+        // sul list db에서 가져와서 읽기
         var readSulQ = "select * from sulListTB;"
         let myDB = DBHelper.shared;
         var sulList:[SulVO] = myDB.readSULData(query: readSulQ) as! [SulVO]

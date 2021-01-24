@@ -32,7 +32,6 @@ class AddSulViewController: UIViewController, UITextFieldDelegate {
             vcTitle.title = "술 수정"
             sulSave.title = "수정"
             
-            // TODO :: 이미지 추가
             sulName.text = curSul?.name
             sulPrice.text = String(curSul?.price as! Int)
             if (curSul!.img) {
@@ -40,8 +39,11 @@ class AddSulViewController: UIViewController, UITextFieldDelegate {
                 let url = documents.appendingPathComponent(curSul!.name + ".jpg")
                 do { sulIMG.image = try UIImage( data: Data(contentsOf: url) ) }
                 catch {
-                    //TODO :: error alert
-                    print("이미지 읽기 실패!")
+                    // 이미지 로드 실패 Alert
+                    let alert = UIAlertController(title: "이미지 가져오기 실패", message: "이미지를 가져오는데 실패하였습니다.", preferredStyle: .alert)
+                    let cancel = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+                    alert.addAction(cancel)
+                    present(alert, animated: false, completion: nil)
                 }
             } else {
                 //TODO 추가 이미지 setting (+)
@@ -86,8 +88,11 @@ class AddSulViewController: UIViewController, UITextFieldDelegate {
                     }
                 }
             }else{
-                //TODO:: 수정에 실패했어용 :< alert
-                
+                // 수정에 실패했어용 :< alert
+                let alert = UIAlertController(title: "이미지 수정 실패", message: "이미지를 수정하는대 실패하였습니다.", preferredStyle: .alert)
+                let cancel = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+                alert.addAction(cancel)
+                present(alert, animated: false, completion: nil)
             }
 
         }
@@ -111,12 +116,18 @@ class AddSulViewController: UIViewController, UITextFieldDelegate {
                 // sulList 화면으로 이동
                 self.navigationController?.popViewController(animated: true)
             }else{
-                // TODO :: sulSave.title (수정/추가) 실패했습니다.
+                //  sulSave.title (수정/추가) 실패했습니다.
+                let alert = UIAlertController(title: "술 저장 실패", message: "술 추가 및 수정에 실패했습니다.", preferredStyle: .alert)
+                let cancel = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+                alert.addAction(cancel)
+                present(alert, animated: false, completion: nil)
             }
         }else{
-            // TODO :: alert
             // 이미 존재하는 이름의 술입니다.
-            
+            let alert = UIAlertController(title: "술 저장 실패", message: "이미 존재하는 이름의 술입니다.", preferredStyle: .alert)
+            let cancel = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+            alert.addAction(cancel)
+            present(alert, animated: false, completion: nil)
         }
         
     }
@@ -151,7 +162,11 @@ class AddSulViewController: UIViewController, UITextFieldDelegate {
             picker.sourceType = .camera
             present(picker, animated: false, completion: nil)
         }else{
-            // TODO :: 카메라 못연다는 alert
+            // 카메라 못연다는 alert
+            let alert = UIAlertController(title: "카메라 열기 실패", message: "카메라 열기에 실패했습니다.", preferredStyle: .alert)
+            let cancel = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+            alert.addAction(cancel)
+            present(alert, animated: false, completion: nil)
         }
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -171,8 +186,11 @@ class AddSulViewController: UIViewController, UITextFieldDelegate {
             do {
                 try data.write(to: documents.appendingPathComponent(self.sulName.text! + ".jpg"))
             } catch {
-                print("이미지 저장 실패!")
-                // TODO :: 이미지 저장실패 alert
+                // 이미지 저장실패 alert
+                let alert = UIAlertController(title: "이미지 저장 실패", message: "이미지를 저장하는대 실패하였습니다.", preferredStyle: .alert)
+                let cancel = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+                alert.addAction(cancel)
+                present(alert, animated: false, completion: nil)
             }
         }
     }
