@@ -14,17 +14,20 @@ class ResultViewController: UITableViewController {
     var haveMoney:Int = 0
 
     var list = [SulVO]()
-    
+    let myDB = DBHelper.shared;  //싱글톤 사용
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        var readSulQ = "select * from sulListTB;"
+        self.list = myDB.readSULData(query: readSulQ) as! [SulVO]
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.list.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = self.list[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! ResultListCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath) as! ResultListCell
         let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let url = documents.appendingPathComponent(row.name + ".jpg")
         if (row.img){

@@ -9,9 +9,9 @@
 import UIKit
 
 class ResultListCell: UITableViewCell {
-
-    @IBOutlet weak var ResultBottle: UILabel!
     @IBOutlet weak var ResultImg: UIImageView!
+    @IBOutlet weak var ResultBottle: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
